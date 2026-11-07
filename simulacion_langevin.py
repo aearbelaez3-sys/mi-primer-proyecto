@@ -22,7 +22,7 @@ for i in range(N):
     dB = np.sqrt(dt) * Z
     
     # Ecuación discreta 9.26
-    w[i+1] = w[i] - r * w[i] * dt + sigma * dB
+        w[i+1] = w[i] - r * w[i] * dt + sigma * dB
 
 # Graficar la trayectoria resultante de la ecuación
 plt.figure(figsize=(10, 5))
@@ -37,4 +37,6 @@ plt.legend()
 # Guardar la gráfica en una imagen antes de subirla
 plt.savefig('resultado_langevin.png', dpi=300)
 plt.show()
+
+
 
