@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Parámetros del problema (puedes ajustar r y sigma a tu gusto)
-r = 2.0          # Constante de amortiguamiento (atracción a cero)
+# Parámetros del problema (Ejemplo 9.13)
+r = 2.0          # Constante de amortiguamiento
 sigma = 0.5      # Parámetro de volatilidad / ruido espacial
 T = 1.0          # Tiempo final de la simulación
 N = 1000         # Número de pasos de tiempo
@@ -21,22 +21,19 @@ for i in range(N):
     # Incremento del movimiento Browniano: Delta B = sqrt(dt) * Z
     dB = np.sqrt(dt) * Z
     
-    # Ecuación discreta 9.26
-        w[i+1] = w[i] - r * w[i] * dt + sigma * dB
+    # Ecuación discreta 9.26 corregida
+    w[i+1] = w[i] - r * w[i] * dt + sigma * dB
 
 # Graficar la trayectoria resultante de la ecuación
 plt.figure(figsize=(10, 5))
 plt.plot(t, w, label='Trayectoria del Proceso', color='dodgerblue', lw=1.5)
 plt.axhline(0, color='gray', linestyle='--', alpha=0.7)
-plt.title('Simulación de la Ecuación de Langevin (Euler-Maruyama)')
+plt.title('Simulacion de la Ecuacion de Langevin (Euler-Maruyama)')
 plt.xlabel('Tiempo (t)')
-plt.ylabel('Posición (y)')
+plt.ylabel('Posicion (y)')
 plt.grid(True, alpha=0.3)
 plt.legend()
 
-# Guardar la gráfica en una imagen antes de subirla
+# Guardar la gráfica en una imagen
 plt.savefig('resultado_langevin.png', dpi=300)
 plt.show()
-
-
-
