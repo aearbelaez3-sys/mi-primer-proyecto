@@ -31,6 +31,7 @@ Dos familias de simulaciones, ambas con Euler-Maruyama:
 - Las M trayectorias se obtienen resolviendo M veces con semillas `seed + k` (reproducibles), y se apilan en un arreglo `(M, n_pasos)`.
 - Referencias teóricas que se comparan: media `X0·e^{mu t}` (= solución determinista de `dx/dt = mu x`, resuelta también con `de.ODEProblem` + `de.Tsit5()`) y mediana `X0·e^{(mu - sigma²/2) t}`. Con `X0 = 0` todo es ≡ 0 porque el ruido es multiplicativo (hay que usar escala lineal).
 - `simulacion_mbg_clase.py` (CLI con argparse) y `simulacion_mbg_clase.ipynb` son la versión principal, con el estilo gráfico "de la clase" (serif, fondo `#fbf7ef`, media en rojo `#a3262a`, mediana en azul `#2a63c6`, eje y logarítmico por defecto). Si cambias la lógica o el estilo en uno, mantén el otro consistente. `simulacion_mbg.py` es una versión anterior (comparación EM vs. determinista).
+- `simulacion_mbg_vs_determinista.py` (CLI, mismas opciones que `simulacion_mbg_clase.py` salvo `--lineal`; M = 10 por defecto) compara las trayectorias con el modelo determinista en escala lineal y logarítmica, e imprime cuántas terminan por debajo de `x(T)` frente a la probabilidad teórica `Φ(sigma·√T/2)`.
 
 **Ecuación de Langevin / Ornstein-Uhlenbeck** `dw = -r w dt + sigma dB` (Ejemplo 9.13, ecuación discreta 9.26 del texto del curso) — Euler-Maruyama vectorizado a mano con numpy (`simulacion_langevin*.py`). `simulacion_langevin_abanico.py` compara cuantiles Monte Carlo con la solución exacta `N(w0 e^{-rt}, sigma²/(2r)(1-e^{-2rt}))`.
 
